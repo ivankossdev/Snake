@@ -1,6 +1,8 @@
 #include <iostream>
 #include <windows.h>
+#include <cstdlib>
 #include <cstring>
+#include <ctime>
 
 using namespace std;
 void MoveXY(int x, int y){
@@ -17,6 +19,8 @@ struct TMap{
 	char map1[mHeight][mWidth + 1];
 	void Clear();
 	void Show();
+	int ex;
+	int ey;
 };
 
 enum TDirection {
@@ -79,7 +83,12 @@ TResult TSnake::UserControl(char w, char s, char a, char d){
 		return reKill;
 	
 	if (mp->map1[y][x] == '*')
+	{
 		AddTail(old.x, old.y);
+		mp->ex = rand() % 78 +1;;
+		mp->ey = rand() % 23 +1;
+	}
+
 	else
 		MoveTail(old.x, old.y);
 	
@@ -121,14 +130,14 @@ void TMap::Clear(){
 	for(int j = 1; j < mHeight; j++){
 		strncpy(map1[j], map1[0], mWidth + 1);
 	}
-	map1[12][20] = '*';
-	map1[12][60] = '*';
-	map1[5][40] = '*';
-	map1[20][40] = '*';
+	map1[ey][ex] = '*';
 }
 
 int main() {
+	srand(time(0));
 	TMap map1;
+	map1.ex = rand() % 78 +1;
+	map1.ey = rand() % 23 +1;
 	TSnake snake1(&map1);
 	snake1.Init(10, 5, dirRight);
 	do{
@@ -142,7 +151,6 @@ int main() {
 	while(GetKeyState(VK_ESCAPE) >= 0);
 	return 0;
 }
-
 
 
 
