@@ -71,10 +71,10 @@ TResult TSnake::UserControl(char w, char s, char a, char d){
 	old.x = x;
 	old.y = y;
 	if(GetKeyState(w) < 0) {
-		dir = dirUp; score = 112;
+		dir = dirUp; score = 125;
 	}
 	if(GetKeyState(s) < 0) {
-		dir = dirDown; score = 112;
+		dir = dirDown; score = 125;
 	}
 	if(GetKeyState(a) < 0) {
 		dir = dirLeft; score = 80;
