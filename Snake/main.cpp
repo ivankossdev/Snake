@@ -3,6 +3,7 @@
 #include <cstdlib>
 #include <cstring>
 #include <ctime>
+#pragma warning(disable : 4996)
 
 using namespace std;
 void MoveXY(int x, int y){
